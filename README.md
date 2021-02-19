@@ -169,9 +169,14 @@ is saved in the container at /var/www/flox/.
 
 An example run would be
 
+    # with docker run
     cd <PROJECT_ROOT>
     docker build . -t flox:latest
     docker run -p '8080:80' --volume '/<PROJECT_ROOT>/target/:/var/www/flox' --env TMDB_API_KEY=<KEY> --rm -name flox flox:latest
+    
+    # with docker-compose (be sure to check all environment variables and change when neccesary)
+    cd <PROJECT_ROOT>
+    docker-compose up -d
     
 You can then connect to localhost:8080 to access the application and any changes you make will be saved in /<PROJECT_ROOT>/target/.
 
@@ -199,6 +204,12 @@ Supported environment variables are:
 - FLOX_TIMEZONE (UTC) - The timezone Flox is running in
 - FLOX_DAILY_REMINDER_TIME (10:00) - The daily reminder time
 - FLOX_WEEKLY_REMINDER_TIME (20:00) - The weekly reminder time
+- FLOX_MAIL_DRIVER - Mail Driver
+- FLOX_MAIL_HOST - Hostname of the mail server
+- FLOX_MAIL_PORT - Port of the mail server (SMTP Port)
+- FLOX_MAIL_USERNAME - User name on the mail server
+- FLOX_MAIL_PASSWORD - User password
+- FLOX_MAIL_ENCRYPTION - Encryption Type (tls,ssl,none)
 
 ### Contribution
 
