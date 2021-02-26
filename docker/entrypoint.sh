@@ -49,21 +49,21 @@ else
     php artisan flox:init --no-interaction $FLOX_DB_NAME $FLOX_DB_USER $FLOX_DB_PASS $FLOX_DB_HOST $FLOX_DB_PORT
 fi
 
-sed -i "s!^DB_CONNECTION=.*!DB_CONNECTION=$FLOX_DB_CONNECTION!g" .env
-sed -i "s!^TMDB_API_KEY=.*!TMDB_API_KEY=$TMDB_API_KEY!g" .env
-sed -i "s!^APP_URL=.*!APP_URL=$FLOX_APP_URL!g" .env
-sed -i "s!^CLIENT_URI=.*!CLIENT_URI=$FLOX_CLIENT_URI!g" .env
-sed -i "s!^APP_DEBUG=.*!APP_DEBUG=$FLOX_APP_DEBUG!g" .env
-sed -i "s!^TIMEZONE=.*!TIMEZONE=$FLOX_TIMEZONE!g" .env
-sed -i "s!^DAILY_REMINDER_TIME=.*!DAILY_REMINDER_TIME=$FLOX_DAILY_REMINDER_TIME!g" .env
-sed -i "s!^WEEKLY_REMINDER_TIME=.*!WEEKLY_REMINDER_TIME=$FLOX_WEEKLY_REMINDER_TIME!g" .env
-sed -i "s!^APP_ENV=.*!APP_ENV=local!g" .env
-sed -i "s!^MAIL_DRIVER=.*!MAIL_DRIVER=$FLOX_MAIL_DRIVER!g" .env
-sed -i "s!^MAIL_HOST=.*!MAIL_HOST=$FLOX_MAIL_HOST!g" .env
-sed -i "s!^MAIL_PORT=.*!MAIL_PORT=$FLOX_MAIL_PORT!g" .env
-sed -i "s!^MAIL_USERNAME=.*!MAIL_USERNAME=$FLOX_MAIL_USERNAME!g" .env
-sed -i "s!^MAIL_PASSWORD=.*!MAIL_PASSWORD=$FLOX_MAIL_PASSWORD!g" .env
-sed -i "s!^MAIL_ENCRYPTION=.*!MAIL_ENCRYPTION=$FLOX_MAIL_ENCRYPTION!g" .env
+sed -ri -e 's,^DB_CONNECTION=.*,DB_CONNECTION='"${FLOX_DB_CONNECTION}"',g' .env
+sed -ri -e 's,^TMDB_API_KEY=.*,TMDB_API_KEY='"${TMDB_API_KEY}"',g' .env
+sed -ri -e 's,^APP_URL=.*,APP_URL='"${FLOX_APP_URL}"',g' .env
+sed -ri -e 's,^CLIENT_URI=.*,CLIENT_URI='"${FLOX_CLIENT_URI}"',g' .env
+sed -ri -e 's,^APP_DEBUG=.*,APP_DEBUG='"${FLOX_APP_DEBUG}"',g' .env
+sed -ri -e 's,^TIMEZONE=.*,TIMEZONE='"${FLOX_TIMEZONE}"',g' .env
+sed -ri -e 's,^DAILY_REMINDER_TIME=.*,DAILY_REMINDER_TIME='"${FLOX_DAILY_REMINDER_TIME}"',g' .env
+sed -ri -e 's,^WEEKLY_REMINDER_TIME=.*,WEEKLY_REMINDER_TIME='"${FLOX_WEEKLY_REMINDER_TIME}"',g' .env
+sed -ri -e 's,^APP_ENV=.*,APP_ENV=local,g' .env
+sed -ri -e 's,^MAIL_DRIVER=.*,MAIL_DRIVER='"${FLOX_MAIL_DRIVER}"',g' .env
+sed -ri -e 's,^MAIL_HOST=.*,MAIL_HOST='"${FLOX_MAIL_HOST}"',g' .env
+sed -ri -e 's,^MAIL_PORT=.*,MAIL_PORT='"${FLOX_MAIL_PORT}"',g' .env
+sed -ri -e 's,^MAIL_USERNAME=.*,MAIL_USERNAME='"${FLOX_MAIL_USERNAME}"',g' .env
+sed -ri -e 's,^MAIL_PASSWORD=.*,MAIL_PASSWORD='"${FLOX_MAIL_PASSWORD}"',g' .env
+sed -ri -e 's,^MAIL_ENCRYPTION=.*,MAIL_ENCRYPTION='"${FLOX_MAIL_ENCRYPTION}"',g' .env
 
 if [ "$FLOX_DB_INIT" = "true" ]; then
     php artisan flox:db --no-interaction $FLOX_ADMIN_USER $FLOX_ADMIN_PASS

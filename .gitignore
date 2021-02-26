@@ -17,3 +17,7 @@ Homestead.yaml
 /public/assets/poster/subpage/*.jpg
 /public/assets/backdrop/*.jpg
 /public/exports/*.json
+
+*.swp
+*.un~
+*~

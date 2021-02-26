@@ -77,6 +77,7 @@ COPY docker/entrypoint.sh /entrypoint.sh
 COPY docker/cron.sh /cron.sh
 COPY docker/supervisord.conf /supervisord.conf
 COPY docker/default.conf /etc/nginx/sites-enabled/default
+COPY docker/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 
 WORKDIR /var/www/flox
 
